@@ -5,7 +5,9 @@ module Devise
   module Strategies
     class JsonWebToken < Base
       def valid?
-        request.headers['Authorization'].present?
+        return false unless request.headers['Authorization'].present?
+        return false unless request.headers['Authorization'].start_with?('Bearer')
+        return true
       end
 
       def authenticate!
