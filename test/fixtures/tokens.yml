@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  jti: 
+  exp: 2018-11-02 09:52:16
+  nbf: 2018-11-02 09:52:16
+  iat: 2018-11-02 09:52:16
+  sub: 
+
+two:
+  jti: 
+  exp: 2018-11-02 09:52:16
+  nbf: 2018-11-02 09:52:16
+  iat: 2018-11-02 09:52:16
+  sub: 

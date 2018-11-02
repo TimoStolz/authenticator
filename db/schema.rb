@@ -10,11 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_040900) do
+ActiveRecord::Schema.define(version: 2018_11_02_085216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "tokens", id: :uuid, default: -> { "uuid_generate_v1mc()" }, force: :cascade do |t|
+    t.text "alg"
+    t.text "key"
+    t.datetime "exp"
+    t.datetime "nbf"
+    t.uuid "user_id"
+    t.jsonb "other_payload"
+    t.datetime "created_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.datetime "updated_at", default: -> { "CURRENT_TIMESTAMP" }, null: false
+    t.index ["user_id"], name: "index_tokens_on_user_id"
+  end
 
   create_table "users", id: :uuid, default: -> { "uuid_generate_v1mc()" }, force: :cascade do |t|
     t.text "username", null: false

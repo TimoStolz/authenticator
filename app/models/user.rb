@@ -8,6 +8,7 @@ class User < ApplicationRecord
          authentication_keys: [:login]
 
   validates :username, presence: :true, uniqueness: { case_sensitive: false }
+  has_many :tokens
 
   attr_accessor :login
 
