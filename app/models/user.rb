@@ -1,3 +1,5 @@
+require 'jwt'
+
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -11,6 +13,18 @@ class User < ApplicationRecord
 
   def login
     @login || username || email
+  end
+
+  def generate_jwt
+    return JWT.encode(
+      {
+        sub: id,
+        iat: DateTime.now.to_i,
+        exp: 14.days.from_now.to_i
+      },
+      Rails.application.secrets.secret_key_base,
+      'HS256'
+    )
   end
 
   def self.find_for_database_authentication(warden_conditions)
