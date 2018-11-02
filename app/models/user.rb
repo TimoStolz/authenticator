@@ -16,7 +16,7 @@ class User < ApplicationRecord
   end
 
   def generate_jwt
-    return JWT.encode(
+    JWT.encode(
       {
         sub: id,
         iat: DateTime.now.to_i,
