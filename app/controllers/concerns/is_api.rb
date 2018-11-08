@@ -4,7 +4,7 @@ module IsApi
   extend ActiveSupport::Concern
 
   included do
-    protect_from_forgery with: :null_session
+    protect_from_forgery with: :null_session, unless: -> { request.format.json? }
     before_action :skip_session
     before_action :set_default_response_format
 
@@ -29,6 +29,6 @@ module IsApi
         request.format = default_response_format
       end
     end
-    
+
   end
 end
