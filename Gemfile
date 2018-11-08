@@ -62,6 +62,10 @@ group :development do
   gem 'ruby-debug-ide'
   gem 'debase'
 
+  # beautiful error pages
+  gem "better_errors"
+  gem "binding_of_caller"
+
   # enable debugging in the console when running rails inside docker, https://www.sitepoint.com/pry-friends-rails/
   gem 'pry-rails'
 
